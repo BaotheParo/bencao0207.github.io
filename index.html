@@ -5989,6 +5989,21 @@
         <audio id="123" autoplay>
             <source src="nhac.mp3" type="audio/mp3">
         </audio>
+        <script>
+            // Lấy phần tử audio
+            var audio = document.getElementById("123");
+    
+            // Thử chạy ngay khi trang tải
+            audio.play().catch(function(error) {
+                console.log("Autoplay bị chặn: ", error);
+                // Chờ tương tác đầu tiên từ người dùng
+                document.body.addEventListener("click", function autoPlay() {
+                    audio.play();
+                    // Xóa sự kiện sau khi phát để không lặp lại
+                    document.body.removeEventListener("click", autoPlay);
+                });
+            });
+        </script>
     </head>
     <body ontouchstart>
             <!-- Các trái tim rơi -->
